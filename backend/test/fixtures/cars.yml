@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  make: MyString
+  model: MyString
+  year: 1
+  image: MyString
+  mileage: 1
+  rating: 1
+  price: 1
+  availible: false
+  user_id: MyString
+
+two:
+  make: MyString
+  model: MyString
+  year: 1
+  image: MyString
+  mileage: 1
+  rating: 1
+  price: 1
+  availible: false
+  user_id: MyString
