@@ -9,9 +9,9 @@ User.destroy_all
 Car.destroy_all
 RentingCar.destroy_all
 
-u1=User.create(user_name:"Jane123", first_name:"Jane", last_name:"Doe", password:"jane123", point:200, email:"jane123@gmail.com" )
-u2=User.create(user_name:"Steven456", first_name:"Steven", last_name:"Nguyen", password:"sn123", point:2500, email:"snguyen@gmail.com" )
-u3=User.create(user_name:"Patrick789", first_name:"Patrick", last_name:"Freeney", password:"pf789", point:3000, email:"pfreeney@gmail.com" )
+u1=User.create(username:"Jane123", firstname:"Jane", lastname:"Doe", password:"jane123", point:200, email:"jane123@gmail.com" )
+u2=User.create(username:"Steven456", firstname:"Steven", lastname:"Nguyen", password:"sn123", point:2500, email:"snguyen@gmail.com" )
+u3=User.create(username:"Patrick789", firstname:"Patrick", lastname:"Freeney", password:"pf789", point:3000, email:"pfreeney@gmail.com" )
 
 c1=Car.create(make:"Chevrolet", model:"Spark", year:2020, image:"https://www.chevrolet.com/content/dam/chevrolet/na/us/english/index/vehicles/2020/cars/spark/mov/01-images/2020-spark-masthead-01.jpg?imwidth=960", mileage:10222, rating: 3.2, price:20, availible:false, user_id:u1.id)
 c2=Car.create(make:"Toyota", model:"FJ Cruiser", year:2008, image:"https://cdn-w.v12soft.com/photos/Ea3k72j/12150330/059083_800600.jpg", mileage:80347, rating: 3.7, price:30,availible:true, user_id:u2.id)
