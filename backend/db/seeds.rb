@@ -23,3 +23,9 @@ r1=RentingCar.create(user_id:u1.id, car_id:c5.id, start_date:11102019, end_date:
 r2=RentingCar.create(user_id:u1.id, car_id:c3.id, start_date:11082019, end_date:11122019, cost:120)
 r3=RentingCar.create(user_id:u2.id, car_id:c4.id, start_date:11102019, end_date:11152019, cost:400)
 r4=RentingCar.create(user_id:u3.id, car_id:c1.id, start_date:11062019, end_date:11082019, cost:40)
+
+
+# fetch to the users (local host Users (api))
+
+# get user array Back
+

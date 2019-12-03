@@ -5,8 +5,8 @@ export default class UserOwnCars extends React.Component {
   render(){
     return(
       <div>
-          UserOwnCars
-          <CarCard/>
+          UserOwnCar
+          <CarCard car ={car}/>
       </div>
     )
   }

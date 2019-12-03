@@ -1,24 +1,25 @@
 import React from 'react';
 
-export default function CarCard(){
+export default function CarCard(props){
     return(
         <div>
             <div class="ui link cards">
                 <div class="card">
                     <div class="image">
-                        <img src="/images/avatar2/large/matthew.png"></img>
+                        <img src={props.car.image}></img>
                     </div>
                     <div class="content">
-                        <ul>Car make/model</ul>
-                        <ul>Car Cost</ul>
+                        <ul>{props.car.make}</ul>
+                        <ul>{props.car.model}</ul>
+                        <ul>{props.car.price} points/day</ul>
                     </div>
                     <div class="extra content">
                         <span class="right floated">
-                            Year
+                            {props.car.year}
                         </span>
                         <span>
                             <i class="star icon"></i>
-                                Avg Rating
+                                {props.car.rating}/5
                         </span>
                     </div>
                 </div>
