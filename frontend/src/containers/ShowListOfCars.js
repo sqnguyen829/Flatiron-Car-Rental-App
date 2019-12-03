@@ -7,8 +7,10 @@ export default class ShowListOfCars extends React.Component {
         // <div className="ui four column grid">
     	// 	<div className="row"></div>
       <div>
-          ShowListOfCars
-          <CarCard/>
+    
+          {this.props.cars.map(car => <CarCard {...car}/>)}
+
+
       </div>
     )
   }
