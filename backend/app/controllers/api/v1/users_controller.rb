@@ -1,4 +1,7 @@
 class Api::V1::UsersController < ApplicationController
+
+    skip_before_action :check_authentication, only: [:create]
+
     def index
         users = User.all
         render json: users.as_json(except: [:created_at, :updated_at], :include => {:cars=>{except: [:created_at, :updated_at]}, :renting_cars =>{except: [:created_at, :updated_at]}})

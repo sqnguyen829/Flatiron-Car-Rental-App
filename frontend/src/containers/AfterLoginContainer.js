@@ -1,6 +1,7 @@
 import React from 'react';
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import NavBar from '../components/NavBar'
-import CurrentUserinfo from '../components/CurrentUserInfo'
+import CurrentUserInfo from '../components/CurrentUserInfo'
 import ShowListOfCar from './ShowListOfCars'
 import UserOwnedCars from './UserOwnedCars'
 import UserRentedCars from './UserRentedCars'
@@ -16,18 +17,16 @@ export default class AfterLoginContainer extends React.Component {
       <div>
         {localStorage.token?
           <div>
-            <NavBar/>
-            {/* <CurrentUserinfo/>
-            <AddCarForm/>
-
-            <ShowListOfCar/>
-            <ShowCarDetails/>
-
-            <UserOwnedCars/>
-            <ShowCarDetails/>
-          
-            <UserRentedCars/>
-            <ShowCarDetails/> */}
+            <NavBar history={this.props.history}/>
+            <CurrentUserInfo/>
+              <div>
+                <Switch>
+                  <Route exact path="/flatironrental/cars" component={()=><ShowListOfCar/>}/>
+                  <Route  path="/flatironrental/cars/owned" component={()=><UserOwnedCars/>}/>
+                  <Route  path="/flatironrental/cars/rented" component={()=><UserRentedCars/>}/>
+                  <Route  path="/flatironrental/cars/new" component={(routerProps)=><AddCarForm {...routerProps}/>}/>
+                </Switch>
+              </div>
           </div>
           :
           <div>

@@ -6,9 +6,9 @@ export default function CurrentUserInfo(){
             <div class="item">
                 <div class="content">
                     <div class="ui sub header">
-                        <i class="user icon"></i>User
+                        <i class="user icon"></i> {localStorage.username}
                     </div>
-                        Points
+                        Points {localStorage.point}
                 </div>
             </div>
         </div>

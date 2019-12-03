@@ -13,7 +13,7 @@ export default class MainContainer extends React.Component {
           <Switch>
             <Route path="/login" component={Login}/>
             <Route path="/signup" component={SignUp}/>
-            <Route path="/home" component={AfterLoginContainer}/>
+            <Route path="/flatironrental" component={AfterLoginContainer} history={this.props.history}/>
           </Switch>
         </div>
       </BrowserRouter>

@@ -26,9 +26,11 @@ export default class Login extends React.Component {
         })
         .then(res=> res.json())
         .then(userInfo => {
+            localStorage.username = userInfo.username
+            localStorage.point= userInfo.point
             localStorage.token = userInfo.token
             if(userInfo.token){
-                this.props.history.push('/home')
+                this.props.history.push('/flatironrental/cars')
             }
         })
     }

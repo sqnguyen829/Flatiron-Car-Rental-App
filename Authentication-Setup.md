@@ -127,5 +127,26 @@ Now the rest of the methods are addeed to app controller
         !!current_user
       end
 
+Now we need to ass a skip before action to skip if the user hasn't logged in yet. So in 
+auth_controller.rb and users_controller.rb place this code.
+    
+    skip_before_action :verify_authenticity_token
+
+Now we make a fetch request with a second argument which is now the token it would look something like this.
+    getCars = () => {
+
+    fetch("http://localhost:3000/api/v1/cars", {
+      method: "GET",
+      headers:{
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    })
+    .then(res => res.json())
+    .then(console.log)
+    }
+
+
+
+
 
 
