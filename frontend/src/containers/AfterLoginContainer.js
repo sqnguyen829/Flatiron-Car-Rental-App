@@ -8,22 +8,33 @@ import AddCarForm from '../components/AddCarForm'
 import ShowCarDetails from '../components/ShowCarDetails'
 
 export default class AfterLoginContainer extends React.Component {
+  redirectToLogin = () => {
+    this.props.history.push('/login')
+  }
   render(){
     return(
       <div>
-          AfterLoginContainer
-          <NavBar/>
-          <CurrentUserinfo/>
-          <AddCarForm/>
+        {localStorage.token?
+          <div>
+            <NavBar/>
+            {/* <CurrentUserinfo/>
+            <AddCarForm/>
 
-          <ShowListOfCar/>
-          <ShowCarDetails/>
+            <ShowListOfCar/>
+            <ShowCarDetails/>
 
-          <UserOwnedCars/>
-          <ShowCarDetails/>
+            <UserOwnedCars/>
+            <ShowCarDetails/>
           
-          <UserRentedCars/>
-          <ShowCarDetails/>
+            <UserRentedCars/>
+            <ShowCarDetails/> */}
+          </div>
+          :
+          <div>
+            <h1>Please Login First.</h1>
+            <button onClick={()=>this.redirectToLogin()}>Head to login page.</button>
+          </div>
+        }
       </div>
     )
   }

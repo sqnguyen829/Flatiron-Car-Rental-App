@@ -1,6 +1,12 @@
 import React from 'react';
+export default class NavBar extends React.Component {
 
-export default function NavBar(){
+    redirectToLogin = () => {
+        localStorage.clear()
+        this.props.history.push('/login')
+    }
+
+    render(){
     return(
         <div className="ui inverted teal menu">
             <a className="item">
@@ -27,12 +33,13 @@ export default function NavBar(){
                     <div className="content">Add Car to Service</div>
                 </h2>
             </a>
-            <a className="item">
+            <a className="item" onClick={()=>this.redirectToLogin()}>
                 <h2 className="ui header">
                     <i className="close icon" />
-                    <div className="content">Log Out</div>
+                    <div className="content" >Log Out</div>
                 </h2>
             </a>
         </div>
     )
+    }
 }

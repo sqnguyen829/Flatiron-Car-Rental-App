@@ -16,12 +16,17 @@ class Api::V1::UsersController < ApplicationController
 
     #sign up
     def create
-        user = User.create(user_params)
-        #
+        user = User.new(user_params)
+        # byebug
         if user.valid?
+            user.save
+            #this next line is sending back the user we just created, the "user:" is the key, which
+            #is the value UserSerializer.new(user). Were we are passing user to the UserSerializer
+            #The serializer will then hand the info back to us depend on what we wanted in the attribute 
+            #of the user_serializer.rb
             render json: {user: UserSerializer.new(user)}, status: :created
         else
-            render json: {error: 'failed to create user'}, status: :not_acceptable
+            render json: {error: 'Failed to create user.'}, status: :not_acceptable
         end
     end
 

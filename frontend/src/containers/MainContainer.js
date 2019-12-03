@@ -1,15 +1,22 @@
 import React from 'react';
-import BeforeLoginContainer from './BeforeLoginContainer'
 import AfterLoginContainer from './AfterLoginContainer'
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import Login from '../components/Login'
+import SignUp from '../components/SignUp'
 
 export default class MainContainer extends React.Component {
+  
   render(){
     return(
-      <div>
-          MainContainer
-        <BeforeLoginContainer/>
-        <AfterLoginContainer/>
-      </div>
+      <BrowserRouter>
+        <div>
+          <Switch>
+            <Route path="/login" component={Login}/>
+            <Route path="/signup" component={SignUp}/>
+            <Route path="/home" component={AfterLoginContainer}/>
+          </Switch>
+        </div>
+      </BrowserRouter>
     )
   }
 }
