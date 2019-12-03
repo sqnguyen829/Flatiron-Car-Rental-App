@@ -9,7 +9,7 @@ class CreateCars < ActiveRecord::Migration[6.0]
       t.integer :rating
       t.integer :price
       t.boolean :availible
-      t.string :user_id
+      t.integer :user_id
 
       t.timestamps
     end

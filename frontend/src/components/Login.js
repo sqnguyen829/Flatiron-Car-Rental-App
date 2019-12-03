@@ -28,6 +28,7 @@ export default class Login extends React.Component {
         .then(userInfo => {
             localStorage.username = userInfo.username
             localStorage.point= userInfo.point
+            localStorage.id=userInfo.id
             localStorage.token = userInfo.token
             if(userInfo.token){
                 this.props.history.push('/flatironrental/cars')

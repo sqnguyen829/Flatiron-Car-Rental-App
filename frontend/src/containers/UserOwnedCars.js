@@ -6,7 +6,7 @@ export default class UserOwnCars extends React.Component {
     return(
       <div>
           UserOwnCar
-          <CarCard car ={car}/>
+          {/* <CarCard car ={car}/> */}
       </div>
     )
   }

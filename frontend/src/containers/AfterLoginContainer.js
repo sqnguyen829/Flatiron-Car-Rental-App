@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 import NavBar from '../components/NavBar'
 import CurrentUserInfo from '../components/CurrentUserInfo'
 import ShowListOfCar from './ShowListOfCars'
@@ -11,20 +11,21 @@ import ShowCarDetails from '../components/ShowCarDetails'
 export default class AfterLoginContainer extends React.Component {
   state =  { cars: [],
              ownerCars: [],
-             rentedCars:[],
-             user:[steven]} 
+             rentedCars:[]
+            //  user:[steven]
+            } 
     
-  componentDidMount() {
+  // componentDidMount() {
   
-    fetch("http://localhost:3001/api/v1/cars")
-      .then(res => res.json())
-      .then(cars => {
-        this.setState({
-          cars
-        },()=> console.log(this.state.cars))
-      })
-      .then(console.log(this.state.cars))
-    }
+  //   fetch("http://localhost:3000/api/v1/cars")
+  //     .then(res => res.json())
+  //     .then(cars => {
+  //       this.setState({
+  //         cars
+  //       },()=> console.log(this.state.cars))
+  //     })
+  //     .then(console.log(this.state.cars))
+  //   }
   
   redirectToLogin = () => {
     this.props.history.push('/login')

@@ -8,7 +8,7 @@ export default class ShowListOfCars extends React.Component {
     	// 	<div className="row"></div>
       <div>
     
-          {this.props.cars.map(car => <CarCard {...car}/>)}
+          {/* {this.props.cars.map(car => <CarCard {...car}/>)} */}
 
 
       </div>
