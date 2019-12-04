@@ -22,7 +22,7 @@ export default class NavBar extends React.Component {
                     <div className="content">My Cars</div>
                 </h2>
             </a>
-            <a className="item" >
+            <a className="item" onClick={()=>this.props.history.push('/flatironrental/cars/rented')}>
                 <h2 className="ui header">
                     <i className="car icon" />
                     <div className="content">My Rented Cars</div>
