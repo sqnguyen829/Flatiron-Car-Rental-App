@@ -33,7 +33,7 @@ export default class AfterLoginContainer extends React.Component {
       this.setState({
         cars:carsData,
         displayCars:carsData,
-        ownerCars: carsData.filter(car=> car.user_id == localStorage.id)
+        ownerCars: carsData.filter(car=> car.user_id === localStorage.id)
       })
     })
 

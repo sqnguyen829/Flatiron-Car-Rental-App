@@ -2,11 +2,11 @@ import React from 'react';
 
 export default function CurrentUserInfo(){
     return(
-        <div class="ui horizontal list">
-            <div class="item">
-                <div class="content">
-                    <div class="ui sub header">
-                        <i class="user icon"></i> {localStorage.username}
+        <div className="ui horizontal list">
+            <div className="item">
+                <div className="content">
+                    <div className="ui sub header">
+                        <i className="user icon"></i> {localStorage.username}
                     </div>
                         Points {localStorage.point}
                 </div>
