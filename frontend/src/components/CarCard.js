@@ -24,7 +24,7 @@ export default function CarCard(props){
                         </span>
                     </div>
                     <div className="extra content">
-                        <button onClick={()=>props.handleShowCar(props.car)}>More Detail</button>
+                        {props.handleShowCar? <button onClick={()=>props.handleShowCar(props.car)}>More Detail</button> : ""}
                     </div>
                 </div>
             </div>

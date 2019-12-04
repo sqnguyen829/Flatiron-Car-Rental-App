@@ -9,9 +9,16 @@ class Api::V1::UsersController < ApplicationController
 
     def show
         user = User.find_by(id: params[:id])
+
         if user
+            cars=[]
+            cars= user.renting_cars.map{ |car|  car.car}
+            # byebug
             # render json: user, except: [:created_at, :updated_at], include: :cars, except: [:created_at, :updated_at],include: :renting_cars, except: [:created_at, :updated_at]
-            render json: user.as_json(except: [:created_at, :updated_at], :include => {:cars=>{except: [:created_at, :updated_at]}, :renting_cars =>{except: [:created_at, :updated_at]}})
+            # render json: user.as_json(except: [:created_at, :updated_at], :include => {:cars=>{except: [:created_at, :updated_at]}, :renting_cars =>{except: [:created_at, :updated_at]}}), cars, except: [:created_at, :updated_at]
+            
+            #sending to the front end the rented cars that this user has
+            render json: cars, except: [:created_at, :updated_at]
         else 
             render json: {message: 'User not found'}
         end
