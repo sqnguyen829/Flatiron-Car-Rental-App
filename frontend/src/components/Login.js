@@ -38,33 +38,33 @@ export default class Login extends React.Component {
 
     render(){
         return(
-            <div class="ui middle aligned center aligned grid">
-                <div class="column">
-                    <h2 class="ui teal image header">
-                    <img src="assets/images/logo.png" class="image" alt=""></img>
-                    <div class="content">
+            <div className="ui middle aligned center aligned grid">
+                <div className="column">
+                    <h2 className="ui teal image header">
+                    <img src="assets/images/logo.png" className="image" alt=""></img>
+                    <div className="content">
                         Log-in to your account
                     </div>
                     </h2>
-                    <form class="ui large form" onSubmit={(e)=>this.login(e)}>
-                        <div class="ui stacked segment">
-                            <div class="field">
-                                <div class="ui left icon input">
-                                    <i class="user icon"></i>
+                    <form className="ui large form" onSubmit={(e)=>this.login(e)}>
+                        <div className="ui stacked segment">
+                            <div className="field">
+                                <div className="ui left icon input">
+                                    <i className="user icon"></i>
                                     <input type="text" name="username" onChange={(e)=>this.handleChange(e)} placeholder="User name"></input>
                                 </div>
                             </div>
-                            <div class="field">
-                                <div class="ui left icon input">
-                                    <i class="lock icon"></i>
+                            <div className="field">
+                                <div className="ui left icon input">
+                                    <i className="lock icon"></i>
                                     <input type="password" name="password" onChange={(e)=>this.handleChange(e)} placeholder="Password"></input>
                                 </div>
                             </div>
-                            <button class="ui fluid large teal submit button" type="submit" >Login</button>
+                            <button className="ui fluid large teal submit button" type="submit" >Login</button>
                         </div>
-                        <div class="ui error message"></div>
+                        <div className="ui error message"></div>
                     </form>
-                    <div class="ui message">
+                    <div className="ui message">
                         New to us? 
                         <a  onClick={()=> this.handleSignup()}> Sign Up</a>
                     </div>
