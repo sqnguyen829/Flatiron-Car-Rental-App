@@ -97,9 +97,9 @@ export default class AfterLoginContainer extends React.Component {
         Authorization: `Bearer ${localStorage.token}`,
         'Content-Type': 'application/json'
       },
-      body:{
+      body: JSON.stringify({
         availible:false
-      }
+      })
     })
     this.props.history.push(`/flatironrental/cars/`)
   }
