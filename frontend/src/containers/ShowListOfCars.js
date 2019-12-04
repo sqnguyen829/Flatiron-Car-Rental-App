@@ -4,13 +4,10 @@ import CarCard from '../components/CarCard'
 export default class ShowListOfCars extends React.Component {
   render(){
     return(
-        // <div className="ui four column grid">
-    	// 	<div className="row"></div>
-      <div>
-    
-          {/* {this.props.cars.map(car => <CarCard {...car}/>)} */}
-
-
+      <div className="ui three column grid">
+        <div className="row">
+          {this.props.cars.map(car => <CarCard car={car}/>)}
+        </div>
       </div>
     )
   }

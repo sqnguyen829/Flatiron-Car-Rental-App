@@ -33,6 +33,7 @@ export default class AddCarForm extends React.Component{
         .then(res=>res.json())
         .then(newCar=>{
             console.log(newCar)
+            this.props.updateCar(newCar)
             this.redirectToHome()
         })
     }
@@ -71,88 +72,3 @@ export default class AddCarForm extends React.Component{
         )
     }
 }
-
-// constructor(){
-//     super()
-//     this.state={
-//       users:[],
-//       currentUser:null,
-//       loginCheck:false
-//     }
-// }
-
-// componentDidMount(){
-//     this.handleGetFetch()
-// }
-
-// handleGetFetch = () => {
-//     fetch(userURL)
-//     .then(res=>res.json())
-//     .then(usersData=>{
-//       this.setState({
-//         users:usersData
-//       })
-//     })
-// }
-
-// handleLoginCheck = () => {
-//     this.setState({
-//       loginCheck:!this.state.loginCheck
-//     })
-// }
-
-// handleNewUser = (e) => {
-//     e.preventDefault()
-//     fetch(userURL, {
-//       method: 'POST',
-//       headers:{
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify({
-//         "user": {
-//           username: e.target[0].value,
-//           firstname: e.target[1].value,
-//           lastname: e.target[2].value,
-//           password: e.target[3].value,
-//           point: e.target[4].value,
-//           email: e.target[5].value
-//         }
-//       })
-//     })
-//     this.handleGetFetch()
-// }
-// render(){
-//     return(
-//         <div>
-//             Sign up form start
-//             <form class="ui form" onSubmit={(e)=>props.handleNewUser(e)}>
-//                 <div class="field">
-//                     <label>User Name</label>
-//                     <input type="text" name="username" placeholder="User name"></input>
-//                 </div>
-//                 <div class="field">
-//                     <label>First Name</label>
-//                     <input type="text" name="firstname" placeholder="First Name"></input>
-//                 </div>
-//                 <div class="field">
-//                     <label>Last Name</label>
-//                     <input type="text" name="lastname" placeholder="Last Name"></input>
-//                 </div>
-//                 <div class="field">
-//                     <label>Password</label>
-//                     <input type="password" name="password" placeholder="Password"></input>
-//                 </div>
-//                 <div class="field">
-//                     <label>Point</label>
-//                     <input type="text" name="point" placeholder="Points"></input>
-//                 </div>
-//                 <div class="field">
-//                     <label>Email Address</label>
-//                     <input type="text" name="email" placeholder="Email"></input>
-//                 </div>
-//                 <button class="ui button" type="submit"  >Submit</button>
-//             </form>
-//             Sign up form end
-//         </div>
-//     )
-// }

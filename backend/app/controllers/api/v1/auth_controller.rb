@@ -7,7 +7,7 @@ class Api::V1::AuthController < ApplicationController
 
         #checks if user exist
         if user &&  user.authenticate(params[:password])
-                                                        #here we pass user.id as a payload to encode_token 
+                                                        #here we pass user.id as a payload to encode_token #inside the encode_token we pass {user_id: user.id} to get an integer back rather than
             render json: {username: user.username, point: user.point, id: user.id, token: encode_token({user_id: user.id})}
         else
             render json: {error: "Invalid username or password!"}

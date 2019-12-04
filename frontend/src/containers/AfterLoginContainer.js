@@ -9,24 +9,41 @@ import AddCarForm from '../components/AddCarForm'
 import ShowCarDetails from '../components/ShowCarDetails'
 
 export default class AfterLoginContainer extends React.Component {
-  state =  { cars: [],
-             ownerCars: [],
-             rentedCars:[]
-            //  user:[steven]
-            } 
-    
-  // componentDidMount() {
-  
-  //   fetch("http://localhost:3000/api/v1/cars")
-  //     .then(res => res.json())
-  //     .then(cars => {
-  //       this.setState({
-  //         cars
-  //       },()=> console.log(this.state.cars))
-  //     })
-  //     .then(console.log(this.state.cars))
-  //   }
-  
+  state = { 
+    cars: [],
+    displayCars:[],
+    ownerCars: [],
+    rentedCars:[]
+  } 
+
+  componentDidMount() {
+    this.fetchCars()
+  }
+
+  fetchCars = () => {
+    fetch("http://localhost:3000/api/v1/cars/", {
+      method: "GET",
+      headers:{
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    })
+    .then(res => res.json())
+    .then(carsData=>{
+      this.setState({
+        cars:carsData,
+        displayCars:carsData,
+        ownerCars: carsData.filter(car=> car.user_id == localStorage.id)
+      })
+    })
+  }
+
+  updateCar=(car)=>{
+    this.setState({
+      displayCars:[...this.state.displayCars, car ],
+      ownerCars:[...this.state.ownerCars, car]
+    })
+  }
+
   redirectToLogin = () => {
     this.props.history.push('/login')
   }
@@ -38,12 +55,13 @@ export default class AfterLoginContainer extends React.Component {
           <div>
             <NavBar history={this.props.history}/>
             <CurrentUserInfo/>
+            {console.log(this.state.displayCars)}
               <div>
                 <Switch>
-                  <Route exact path="/flatironrental/cars" component={()=><ShowListOfCar/>}/>
-                  <Route  path="/flatironrental/cars/owned" component={()=><UserOwnedCars/>}/>
-                  <Route  path="/flatironrental/cars/rented" component={()=><UserRentedCars/>}/>
-                  <Route  path="/flatironrental/cars/new" component={(routerProps)=><AddCarForm {...routerProps}/>}/>
+                  <Route exact path="/flatironrental/cars" component={()=><ShowListOfCar cars={this.state.displayCars}/>}/>
+                  <Route  path="/flatironrental/cars/owned" component={()=><UserOwnedCars cars={this.state.ownerCars}/>}/>
+                  <Route  path="/flatironrental/cars/rented" component={()=><UserRentedCars />}/>
+                  <Route  path="/flatironrental/cars/new" component={(routerProps)=><AddCarForm {...routerProps} updateCar={this.updateCar}/>}/>
                 </Switch>
               </div>
           </div>
