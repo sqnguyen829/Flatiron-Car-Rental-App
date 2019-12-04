@@ -17,6 +17,14 @@ class Api::V1::CarsController < ApplicationController
     def create
         car = Car.create(car_params)
         render json: car, except: [:created_at, :updated_at]
+        
+        # car = Car.new(car_params)
+        # if car.valid?
+        #     car.save
+        #     render json: {car: CarSerializer.new(car)}, status: :created
+        # else
+        #     render json: {error: 'Failed to add car.'}, status: :not_acceptable
+        # end
     end
 
     def update

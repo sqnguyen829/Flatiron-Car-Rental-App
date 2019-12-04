@@ -22,6 +22,9 @@ export default function CarCard(props){
                                 {props.car.rating}/5
                         </span>
                     </div>
+                    <div class="extra content">
+                        <button onClick={()=>props.handleShowCar(props.car)}>More Detail</button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -24,8 +24,7 @@ export default class SignUp extends React.Component {
               email: e.target[5].value
             }
           })
-        })
-        .then(() => this.redirectToLogin())
+        },this.redirectToLogin())
     }
     render(){
         return(
