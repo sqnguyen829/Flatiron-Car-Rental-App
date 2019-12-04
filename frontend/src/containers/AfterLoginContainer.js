@@ -11,8 +11,9 @@ import ShowCarDetails from '../components/ShowCarDetails'
 export default class AfterLoginContainer extends React.Component {
   state =  { cars: [],
              ownerCars: [],
-             rentedCars:[],
-             user:[steven]} 
+             rentedCars:[]
+            //  user:[steven]
+  }
     
   componentDidMount() {
   
