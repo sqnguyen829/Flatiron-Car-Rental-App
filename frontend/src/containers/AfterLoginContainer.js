@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 import NavBar from '../components/NavBar'
 import CurrentUserInfo from '../components/CurrentUserInfo'
 import ShowListOfCar from './ShowListOfCars'
@@ -9,23 +9,41 @@ import AddCarForm from '../components/AddCarForm'
 import ShowCarDetails from '../components/ShowCarDetails'
 
 export default class AfterLoginContainer extends React.Component {
-  state =  { cars: [],
-             ownerCars: [],
-             rentedCars:[],
-             user:[steven]} 
-    
+  state = { 
+    cars: [],
+    displayCars:[],
+    ownerCars: [],
+    rentedCars:[]
+  } 
+
   componentDidMount() {
-  
-    fetch("http://localhost:3001/api/v1/cars")
-      .then(res => res.json())
-      .then(cars => {
-        this.setState({
-          cars
-        },()=> console.log(this.state.cars))
+    this.fetchCars()
+  }
+
+  fetchCars = () => {
+    fetch("http://localhost:3000/api/v1/cars/", {
+      method: "GET",
+      headers:{
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    })
+    .then(res => res.json())
+    .then(carsData=>{
+      this.setState({
+        cars:carsData,
+        displayCars:carsData,
+        ownerCars: carsData.filter(car=> car.user_id == localStorage.id)
       })
-      .then(console.log(this.state.cars))
-    }
-  
+    })
+  }
+
+  updateCar=(car)=>{
+    this.setState({
+      displayCars:[...this.state.displayCars, car ],
+      ownerCars:[...this.state.ownerCars, car]
+    })
+  }
+
   redirectToLogin = () => {
     this.props.history.push('/login')
   }
@@ -37,12 +55,13 @@ export default class AfterLoginContainer extends React.Component {
           <div>
             <NavBar history={this.props.history}/>
             <CurrentUserInfo/>
+            {console.log(this.state.displayCars)}
               <div>
                 <Switch>
-                  <Route exact path="/flatironrental/cars" component={()=><ShowListOfCar/>}/>
-                  <Route  path="/flatironrental/cars/owned" component={()=><UserOwnedCars/>}/>
-                  <Route  path="/flatironrental/cars/rented" component={()=><UserRentedCars/>}/>
-                  <Route  path="/flatironrental/cars/new" component={(routerProps)=><AddCarForm {...routerProps}/>}/>
+                  <Route exact path="/flatironrental/cars" component={()=><ShowListOfCar cars={this.state.displayCars}/>}/>
+                  <Route  path="/flatironrental/cars/owned" component={()=><UserOwnedCars cars={this.state.ownerCars}/>}/>
+                  <Route  path="/flatironrental/cars/rented" component={()=><UserRentedCars />}/>
+                  <Route  path="/flatironrental/cars/new" component={(routerProps)=><AddCarForm {...routerProps} updateCar={this.updateCar}/>}/>
                 </Switch>
               </div>
           </div>
