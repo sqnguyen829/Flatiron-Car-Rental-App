@@ -13,7 +13,8 @@ export default class AfterLoginContainer extends React.Component {
     cars: [],
     displayCars:[],
     ownerCars: [],
-    rentedCars:[]
+    rentedCars:[],
+    showCar:null
   } 
 
   componentDidMount() {
@@ -44,6 +45,17 @@ export default class AfterLoginContainer extends React.Component {
     })
   }
 
+  handleShowCar= (car) =>{
+    this.setState({
+      showCar:car
+    })
+    this.props.history.push(`/flatironrental/cars/${car.id}`)
+  }
+
+  updateRentalCar = () =>{
+    console.log("update rental")
+  }
+
   redirectToLogin = () => {
     this.props.history.push('/login')
   }
@@ -58,9 +70,10 @@ export default class AfterLoginContainer extends React.Component {
             {console.log(this.state.displayCars)}
               <div>
                 <Switch>
-                  <Route exact path="/flatironrental/cars" component={()=><ShowListOfCar cars={this.state.displayCars}/>}/>
+                  <Route exact path="/flatironrental/cars" component={()=><ShowListOfCar cars={this.state.displayCars} handleShowCar={this.handleShowCar}/>}/>
                   <Route  path="/flatironrental/cars/owned" component={()=><UserOwnedCars cars={this.state.ownerCars}/>}/>
                   <Route  path="/flatironrental/cars/rented" component={()=><UserRentedCars />}/>
+                  <Route path= {`/flatironrental/cars/${this.state.showCar? this.state.showCar.id:''}`} component={()=><ShowCarDetails car={this.state.showCar}/>}/>
                   <Route  path="/flatironrental/cars/new" component={(routerProps)=><AddCarForm {...routerProps} updateCar={this.updateCar}/>}/>
                 </Switch>
               </div>
