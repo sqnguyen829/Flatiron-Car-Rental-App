@@ -5,7 +5,7 @@ export default class StartLogin extends React.Component {
     redirectToLogin = () => {
         this.props.history.push('/login')
     }
-    
+
     render(){
         return(
             <div>

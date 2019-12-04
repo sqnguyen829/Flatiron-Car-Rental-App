@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function CurrentUserInfo(){
+    
     return(
         <div className="ui horizontal list">
             <div className="item">
