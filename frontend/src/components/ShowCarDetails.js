@@ -12,7 +12,7 @@ export default function ShowCarDetails(props){
                 <div class="content">
                     <div class="header"> {props.car.make} {props.car.model}</div>
                     <div class="meta">
-                        <span class="price">$1200</span>
+                        <span class="price"></span>
                         <span class="stay">1 Month</span>
                     </div>
                     <div class="description">

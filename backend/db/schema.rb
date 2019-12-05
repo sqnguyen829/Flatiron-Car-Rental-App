@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_11_28_163136) do
     t.integer "rating"
     t.integer "price"
     t.boolean "availible"
-    t.integer "user_id"
+    t.string "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

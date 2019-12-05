@@ -2,27 +2,24 @@ import React from 'react';
 
 
 export default function CarCard(props){
-    // const RemoveCar = () => props.handleRemoveCar ?
-    //     <button onClick={()=>props.handleRemoveCar(props.car)}>Return Car</button> 
-    //     : <div></div>
     return(
         <div>
-            <div class="ui link cards">
-                <div class="card">
-                    <div class="image">
-                        <img src={props.car.image}></img>
+            <div className="ui link cards">
+                <div className="card">
+                    <div className="imageContainer">
+                        <img alt="card car" className= "image" src={props.car.image} ></img>
                     </div>
-                    <div class="content">
+                    <div className="content">
                         <ul>{props.car.make}</ul>
                         <ul>{props.car.model}</ul>
                         <ul>{props.car.price} points/day</ul>
                     </div>
-                    <div class="extra content">
-                        <span class="right floated">
+                    <div className="extra content">
+                        <span className="right floated">
                             {props.car.year}
                         </span>
                         <span>
-                            <i class="star icon"></i>
+                            <i className="star icon"></i>
                                 {props.car.rating}/5
                         </span>
                     </div>

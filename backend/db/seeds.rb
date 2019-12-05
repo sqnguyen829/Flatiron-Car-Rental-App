@@ -17,7 +17,7 @@ c1=Car.create(make:"Chevrolet", model:"Spark", year:2020, image:"https://www.che
 c2=Car.create(make:"Toyota", model:"FJ Cruiser", year:2008, image:"https://cdn-w.v12soft.com/photos/Ea3k72j/12150330/059083_800600.jpg", mileage:80347, rating: 3.7, price:30,availible:true, user_id:u2.id)
 c3=Car.create(make:"Toyota", model:"FJ Cruiser", year:2012, image:"https://www.vividracing.com/images/T0654FJ-SS-1.jpg", mileage:20483, rating: 4.7, price:40, availible:false, user_id:u2.id)
 c4=Car.create(make:"Mercedes-Benz", model:"S 450 Sedan", year:2020, image:"https://www.mbusa.com/content/dam/mb-nafta/us/myco/my20/s/sedan/byo-options/2020-S-SEDAN-MP-011.jpg", mileage:600, rating: 4.9, price:80, availible:false, user_id:u3.id)
-c5=Car.create(make:"Speed", model:"YBY 120", year:2018, image:"https://ae01.alicdn.com/kf/HTB1b9skJVXXXXXQXXXXq6xXFXXXu/220086755/HTB1b9skJVXXXXXQXXXXq6xXFXXXu.jpg?size=149988&height=800&width=800&hash=eb27fdc36c0c0718306d21ae529bb5a5", mileage:254, rating: 1, price:5, availible:false, user_id:u3.id)
+c5=Car.create(make:"Speed", model:"YBY 120", year:2018, image:"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.businessinsider.com%2Fimage%2F52df43b66bb3f7cd24a09e3b%2Fimage.jpg&f=1&nofb=1", mileage:254, rating: 1, price:5, availible:false, user_id:u3.id)
 
 r1=RentingCar.create(user_id:u1.id, car_id:c5.id, start_date:11102019, end_date:11122019, cost:10)
 r2=RentingCar.create(user_id:u1.id, car_id:c3.id, start_date:11082019, end_date:11122019, cost:120)
