@@ -160,10 +160,10 @@ export default class AfterLoginContainer extends React.Component {
               <div>
                 <Switch>
                   <Route exact path="/flatironrental/cars" component={()=><ShowListOfCar cars={this.state.displayCars} handleShowCar={this.handleShowCar}/>}/>
-                  <Route  path="/flatironrental/cars/owned" component={()=><UserOwnedCars cars={this.state.ownerCars}/>}/>
-                  <Route  path="/flatironrental/cars/rented" component={()=><UserRentedCars cars={this.state.rentedCars} handleRemoveCar={this.handleRemoveCar}/>}/>
-                  <Route path= {`/flatironrental/cars/${this.state.showCar? this.state.showCar.id:''}`} component={()=><ShowCarDetails car={this.state.showCar} handleRentCar={this.handleRentCar}/>}/>
-                  <Route  path="/flatironrental/cars/new" component={(routerProps)=><AddCarForm {...routerProps} updateCar={this.updateCar}/>}/>
+                  <Route path="/flatironrental/cars/owned" component={()=><UserOwnedCars cars={this.state.ownerCars}/>}/>
+                  <Route path="/flatironrental/cars/rented" component={()=><UserRentedCars cars={this.state.rentedCars} handleRemoveCar={this.handleRemoveCar}/>}/>
+                  <Route path="/flatironrental/cars/new" component={(routerProps)=><AddCarForm {...routerProps} updateCar={this.updateCar}/>}/>
+                  <Route exact path={`/flatironrental/cars/${this.state.showCar? this.state.showCar.id:''}`} component={()=><ShowCarDetails car={this.state.showCar} handleRentCar={this.handleRentCar}/>}/>
                 </Switch>
               </div>
           </div>

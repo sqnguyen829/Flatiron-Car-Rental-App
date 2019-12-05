@@ -1,0 +1,8 @@
+Running the App
+
+-cd into the backend and type rails s to turn on the sever
+-then cd into the frontend type npm i && npm start, or npm start if you don't need to install 
+
+So if everthing works out the sever should be running in localhost 3000 while the client is runniing on 3001
+
+The App should allow a user to sign up and login. Once they are logged in the user will be taken to the main app page, where a list of cars will be shown for renting. The user at this point has a couple of options. So lets just walk through them. First there is a nav bar which contains a home, cars owned  by the user, cars  rented by the user and a page to add cars to a rental app list. In the home page the user can see more details on a car and when redirected into that page, the user will need to input a start and end date for renting that car. After hitting the submit button rent the car the users My Rented Cars page should be update with that specific car and the car availible value is changed to false with a patch request. For now there is no filter for which cars are availible to show on the main page. Next users can add new cars to the app to be rented out to other people  in the add car to service tab. A form should now be on the page and they would need to fill out the info as for image it would need to be an address link from the web. Once submitted the user can now see the new car in the Home page as well as thier My cars page. User can log out of the app as well. The app can not be accessed unless a user is logged in, the app uses authentication to do so.
