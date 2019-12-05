@@ -20,7 +20,7 @@ export default function ShowCarDetails(props){
                     </div>
                 </div>
             </div>
-            <form class="ui form" onSubmit={(e)=>props.handleRentCar(e)}>
+            <form class="ui form" onSubmit={(e)=>props.handleRentCar(e,props.car)}>
                 <div class="field">
                     <label>Start Date ex:08/10/19 should be 081019</label>
                     <input type="number" name="start_date" placeholder="start date" ></input>
