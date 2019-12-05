@@ -9,6 +9,7 @@ export default class NavBar extends React.Component {
 
     render(){
     return(
+        
         <div className="ui inverted teal menu">
             <a className="item" onClick={()=>this.props.history.push('/flatironrental/cars')}>
                 <h2 className="ui header">
