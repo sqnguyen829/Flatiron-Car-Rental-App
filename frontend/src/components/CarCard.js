@@ -1,6 +1,10 @@
 import React from 'react';
 
+
 export default function CarCard(props){
+    // const RemoveCar = () => props.handleRemoveCar ?
+    //     <button onClick={()=>props.handleRemoveCar(props.car)}>Return Car</button> 
+    //     : <div></div>
     return(
         <div>
             <div class="ui link cards">
@@ -23,7 +27,12 @@ export default function CarCard(props){
                         </span>
                     </div>
                     <div class="extra content">
-                        {props.handleShowCar? <button onClick={()=>props.handleShowCar(props.car)}>More Detail</button> : ""}
+                        {props.handleShowCar ? 
+                            <button onClick={()=>props.handleShowCar(props.car)}>More Detail</button> 
+                            : props.handleRemoveCar ?
+                            <button onClick={()=>props.handleRemoveCar(props.car)}>Return Car</button> 
+                            : ''
+                        }
                     </div>
                 </div>
             </div>

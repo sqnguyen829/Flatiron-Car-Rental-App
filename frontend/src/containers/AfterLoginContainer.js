@@ -13,6 +13,7 @@ export default class AfterLoginContainer extends React.Component {
     cars: [],
     displayCars:[],
     ownerCars: [],
+    rentingList: [],
     rentedCars:null,
     showCar:null
   } 
@@ -46,8 +47,20 @@ export default class AfterLoginContainer extends React.Component {
     .then(res=> res.json())
     .then(userRentedCars=>{
       this.setState({
-        rentedCars: userRentedCars,
-        userRentedCarList: userRentedCars.rentingCar
+        rentedCars: userRentedCars
+      })
+    })
+
+    fetch(`http://localhost:3000/api/v1/renting_cars`,{
+      method: "GET",
+      headers:{
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    })
+    .then(res=> res.json())
+    .then(rentList=>{
+      this.setState({
+        rentingList: rentList
       })
     })
   }
@@ -88,7 +101,11 @@ export default class AfterLoginContainer extends React.Component {
       })
     })
     .then(res => res.json())
-    .then(data=> console.log(data))
+    .then(data=> {
+      this.setState({
+        rentedCars:[...this.state.rentedCars,data]
+      })
+    })
 
     fetch(`http://localhost:3000/api/v1/cars/${this.state.showCar.id}`,{
       method:'PATCH',
@@ -111,6 +128,25 @@ export default class AfterLoginContainer extends React.Component {
   redirectToLogin = () => {
     this.props.history.push('/login')
   }
+
+  handleRemoveCar = (carinfo) =>{
+    let rentingCar = this.state.rentingList.find(rental => rental.id == carinfo.id)
+    console.log(this.state.rentingList)
+    console.log(rentingCar? rentingCar.id:"cant find id")
+    if(rentingCar){
+      fetch(`http://localhost:3000/api/v1/renting_cars/${rentingCar.id}`,{
+        method:"DELETE",
+        headers:{
+          Authorization: `Bearer ${localStorage.token}`
+        }
+      },
+        this.setState({
+        rentedCars: this.state.rentedCars.filter(car => car.id !== carinfo.id)
+        })
+      )
+    }
+  }
+
   render(){
    
     return(
@@ -119,12 +155,12 @@ export default class AfterLoginContainer extends React.Component {
           <div>
             <NavBar history={this.props.history}/>
             <CurrentUserInfo/>
-            {console.log(this.state.rentedCars)}
+            {console.log(this.state.rentingList)}
               <div>
                 <Switch>
                   <Route exact path="/flatironrental/cars" component={()=><ShowListOfCar cars={this.state.displayCars} handleShowCar={this.handleShowCar}/>}/>
                   <Route  path="/flatironrental/cars/owned" component={()=><UserOwnedCars cars={this.state.ownerCars}/>}/>
-                  <Route  path="/flatironrental/cars/rented" component={()=><UserRentedCars cars={this.state.rentedCars}/>}/>
+                  <Route  path="/flatironrental/cars/rented" component={()=><UserRentedCars cars={this.state.rentedCars} handleRemoveCar={this.handleRemoveCar}/>}/>
                   <Route path= {`/flatironrental/cars/${this.state.showCar? this.state.showCar.id:''}`} component={()=><ShowCarDetails car={this.state.showCar} handleRentCar={this.handleRentCar}/>}/>
                   <Route  path="/flatironrental/cars/new" component={(routerProps)=><AddCarForm {...routerProps} updateCar={this.updateCar}/>}/>
                 </Switch>

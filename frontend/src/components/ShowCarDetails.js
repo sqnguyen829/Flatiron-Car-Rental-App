@@ -3,7 +3,9 @@ import React from 'react';
 export default function ShowCarDetails(props){
     return(
         <div class="ui items">
-            <div class="item">
+            {props.car? 
+            <div>
+                <div class="item">
                 <div class="ui medium image">
                     <img src={props.car.image}></img>
                 </div>
@@ -29,6 +31,11 @@ export default function ShowCarDetails(props){
                 </div>
                 <button class="ui button" type="submit">Submit</button>
             </form>
+            </div>
+            :
+            ''
+            }
+            
         </div>
     )
 }
