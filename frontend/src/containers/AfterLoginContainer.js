@@ -14,7 +14,7 @@ export default class AfterLoginContainer extends React.Component {
     displayCars:[],
     ownerCars: [],
     rentingList: [],
-    rentedCars:null,
+    rentedCars:[],
     showCar:null
   } 
 
@@ -34,7 +34,7 @@ export default class AfterLoginContainer extends React.Component {
       this.setState({
         cars:carsData,
         displayCars:carsData,
-        ownerCars: carsData.filter(car=> car.user_id === localStorage.id)
+        ownerCars: carsData.filter(car=> car.user_id == localStorage.id)
       })
     })
 
@@ -79,7 +79,7 @@ export default class AfterLoginContainer extends React.Component {
     this.props.history.push(`/flatironrental/cars/${car.id}`)
   }
 
-  handleRentCar = (e) =>{
+  handleRentCar = (e,carData) =>{
     e.preventDefault()
 
     fetch(`http://localhost:3000/api/v1/renting_cars/`,{
@@ -103,7 +103,8 @@ export default class AfterLoginContainer extends React.Component {
     .then(res => res.json())
     .then(data=> {
       this.setState({
-        rentedCars:[...this.state.rentedCars,data]
+        rentingList:[...this.state.rentingList, data],
+        rentedCars:[...this.state.rentedCars, carData]
       })
     })
 
