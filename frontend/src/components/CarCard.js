@@ -1,7 +1,7 @@
 import React from 'react';
 
+
 export default function CarCard(props){
-    
     return(
         <div>
             <div className="ui link cards">
@@ -23,8 +23,13 @@ export default function CarCard(props){
                                 {props.car.rating}/5
                         </span>
                     </div>
-                    <div className="extra content">
-                        {props.handleShowCar? <button onClick={()=>props.handleShowCar(props.car)}>More Detail</button> : ""}
+                    <div class="extra content">
+                        {props.handleShowCar ? 
+                            <button onClick={()=>props.handleShowCar(props.car)}>More Detail</button> 
+                            : props.handleRemoveCar ?
+                            <button onClick={()=>props.handleRemoveCar(props.car)}>Return Car</button> 
+                            : ''
+                        }
                     </div>
                 </div>
             </div>
