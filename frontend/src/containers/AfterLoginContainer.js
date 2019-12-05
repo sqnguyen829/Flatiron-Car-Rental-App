@@ -164,6 +164,9 @@ export default class AfterLoginContainer extends React.Component {
                   <Route path="/flatironrental/cars/rented" component={()=><UserRentedCars cars={this.state.rentedCars} handleRemoveCar={this.handleRemoveCar}/>}/>
                   <Route path="/flatironrental/cars/new" component={(routerProps)=><AddCarForm {...routerProps} updateCar={this.updateCar}/>}/>
                   <Route exact path={`/flatironrental/cars/${this.state.showCar? this.state.showCar.id:''}`} component={()=><ShowCarDetails car={this.state.showCar} handleRentCar={this.handleRentCar}/>}/>
+                  {/* either line will work, but the bottom line needs to be the last line for it to work, the id is undefined at the line above which caused the route to redirect to ShowCarDetails because without an id  it's just "/flatironrental/cars" */}
+                  {/* <Route path={`/flatironrental/cars/${this.state.showCar? this.state.showCar.id:''}`} component={()=><ShowCarDetails car={this.state.showCar} handleRentCar={this.handleRentCar}/>}/> */}
+
                 </Switch>
               </div>
           </div>
